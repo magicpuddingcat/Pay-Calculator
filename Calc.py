@@ -8,7 +8,7 @@ from math import *
 class Calc:
 
     rate = 48.0
-    day_allowance = 29.7
+    pm_allowance = 29.7
     night_allowance = 82.0
     weekend_loading = 0.5
     holiday_loading = 1.0
@@ -29,7 +29,7 @@ class Calc:
         self.user_total_hours.pack()
 
         # Widgets to get number of day shifts the user worked
-        self.days_worked_lbl = Label(master, text = "How many morning/afternoon shifts did you work?")
+        self.days_worked_lbl = Label(master, text = "How many afternoon shifts did you work?")
         self.days_worked_lbl.pack()
         self.user_days = Entry(master)
         self.user_days.pack()
@@ -63,7 +63,7 @@ class Calc:
     def calculate_pay(self):
         # If the user has entered something in all fields and clicks calculate, calculate pay
         pay = self.num_total_hours * self.rate + self.num_nights * self.night_allowance + \
-              self.num_days * self.day_allowance + \
+              self.num_days * self.pm_allowance + \
             self.num_hours_wkend * self.rate * self.weekend_loading \
               + self.num_hours_holiday * self.rate * self.holiday_loading
         return pay
